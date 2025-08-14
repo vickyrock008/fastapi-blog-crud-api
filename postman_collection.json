@@ -1,0 +1,190 @@
+{
+  "info": {
+    "name": "LawVriksh - Assignment 1",
+    "_postman_id": "a1111111-b111-4111-8111-111111111111",
+    "description": "CRUD + Like + Comment with JWT auth",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Signup",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/signup",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "signup"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@example.com\",\n  \"name\": \"User\",\n  \"password\": \"secret\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/login",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"secret\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Create Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"First Post\",\n  \"content\": \"Hello world\"\n}"
+        }
+      }
+    },
+    {
+      "name": "List Posts",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Like Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/1/like",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts",
+            "1",
+            "like"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Comment Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/1/comment",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts",
+            "1",
+            "comment"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"content\": \"Nice!\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Get Comments",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/1/comments",
+          "host": [
+            "http://127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts",
+            "1",
+            "comments"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
